@@ -1,0 +1,28 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "LampeExterieur",
+    "version": "1.0.0",
+    "maturity": "stable",
+
+    "id": 17,
+    "autoload": true,
+    "singleton": true,
+    "defaults": {
+                "heureDebut": 18,
+                "minuteDebut": 0,
+                "heureFin": 23,
+                "minuteFin": 0,
+                "interval": 5,
+                    "map": [
+                        {
+                        }
+                        ]
+    },
+    "actions": {},
+    "metrics": {}
+}

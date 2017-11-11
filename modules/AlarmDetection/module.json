@@ -1,0 +1,22 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "AlarmDetection",
+    "version": "1.0.0",
+    "maturity": "stable",
+    "id": 19,
+    "autoload": true,
+    "defaults": {
+                   "heureDebut": 1,
+                   "minuteDebut": 0,
+                   "heureFin": 6,
+                   "minuteFin": 0,
+                   "weekDay": [0, 6, 1]
+    },
+    "actions": {},
+    "metrics": {}
+}

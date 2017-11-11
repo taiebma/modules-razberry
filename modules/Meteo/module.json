@@ -1,0 +1,23 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "Meteo",
+    "version": "1.0.0",
+    "maturity": "stable",
+
+    "id": 11,
+    "autoload": true,
+    "singleton": true,
+    "userView": true,
+    "seuilLuminosite": 100,
+    "defaults": {
+                "device": "CapteurLuminosite",
+                "interval": 2
+    },
+    "actions": {},
+    "metrics": {}
+}

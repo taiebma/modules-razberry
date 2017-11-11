@@ -1,0 +1,33 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "FibSensor1",
+    "version": "1.0.0",
+    "maturity": "stable",
+
+    "id": 14,
+    "autoload": true,
+    "singleton": true,
+    "defaults": {
+                "seuilLuminosite": 22 ,
+                "heureDebut": 17,
+                "minuteDebut": 0,
+                "heureFin": 23,
+                "minuteFin": 0,
+                "interval": 5,
+                "luminosite": "ZWayVDev_zway_5-0-49-3",
+                "alarme": "ZWayVDev_zway_5-0-48-1",
+                "temperature": "ZWayVDev_zway_5-0-49-1",
+                "forecast": "MeteoDevice1",
+                    "map": [
+                        {
+                        }
+                        ]
+    },
+    "actions": {},
+    "metrics": {}
+}

@@ -1,0 +1,22 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "BonneNuitSalon",
+    "version": "1.0.0",
+    "maturity": "stable",
+
+    "id": 10,
+    "autoload": true,
+    "singleton": false,
+    "defaults": {
+                   "heureArret": 23,
+                   "minuteArret": 0,
+                   "weekDay": [0, 6, 1]
+    },
+    "actions": {},
+    "metrics": {}
+}

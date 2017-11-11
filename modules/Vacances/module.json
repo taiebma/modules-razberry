@@ -1,0 +1,31 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "Vacances",
+    "version": "1.0.0",
+    "maturity": "stable",
+
+    "id": 21,
+    "autoload": true,
+    "singleton": true,
+    "defaults": {
+                "seuilLuminosite": 130,
+                "heureDebut": 17,
+                "minuteDebut": 0,
+                "heureFin": 21,
+                "minuteFin": 30,
+                "heureArret": 22,
+                "minuteArret": 0,
+                "interval": 5,
+                    "map": [
+                        {
+                        }
+                        ]
+    },
+    "actions": {},
+    "metrics": {}
+}

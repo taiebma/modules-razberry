@@ -1,0 +1,20 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "Scenes",
+    "version": "1.0.0",
+    "maturity": "stable",
+
+    "id": 20,
+    "autoload": true,
+    "singleton": true,
+    "userView": true,
+    "defaults": {
+    },
+    "actions": {},
+    "metrics": {}
+}

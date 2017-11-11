@@ -1,0 +1,35 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "Portail",
+    "version": "1.0.0",
+    "maturity": "stable",
+
+    "id": 15,
+    "autoload": true,
+    "singleton": true,
+    "userView": true,
+    "defaults": {
+                "heureOuverture": 6,
+                "minuteOuverture": 45,
+                "heureFermeture": 0,
+                "minuteFermeture": 0,
+                "weekDayOpen": [1, 5, 1],
+                "weekDayClose": [0, 6, 1],
+                "alarme": "ZWayVDev_zway_6-0-48-1",
+		"ferieDevice": "ZWayVDev_zway_34-0-37-6",
+                "urlPortailOpen": "http://10.1.10.52/status.xml?pl1=1",
+                "urlPortailClose": "http://10.1.10.52/status.xml?pl1=1",
+                "urlPortailPartial": "http://10.1.10.52/status.xml?pl2=1",
+                    "map": [
+                        {
+                        }
+                        ]
+    },
+    "actions": {},
+    "metrics": {}
+}

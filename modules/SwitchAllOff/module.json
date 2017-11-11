@@ -1,0 +1,12 @@
+{
+    "id": 18,
+    "autoload": true,
+    "singleton": true,
+    "defaults": {
+                   "heureUpdate": 2,
+                   "minuteUpdate": 0,
+                   "weekDay": [0, 6, 1]
+    },
+    "actions": {},
+    "metrics": {}
+}

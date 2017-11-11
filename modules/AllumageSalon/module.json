@@ -1,0 +1,29 @@
+{
+    "singleton": true,
+    "dependencies": [],
+    "category": "basic_gateway_modules",
+    "author": "Marc TAIEB",
+    "homepage": "http://",
+    "icon": "icon.png",
+    "moduleName": "AllumageSalon",
+    "version": "1.0.0",
+    "maturity": "stable",
+
+    "id": 9,
+    "autoload": true,
+    "singleton": true,
+    "defaults": {
+                "seuilLuminosite": 130,
+                "heureDebut": 16,
+                "minuteDebut": 0,
+                "heureFin": 22,
+                "minuteFin": 30,
+                "interval": 5,
+                    "map": [
+                        {
+                        }
+                        ]
+    },
+    "actions": {},
+    "metrics": {}
+}
