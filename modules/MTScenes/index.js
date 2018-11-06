@@ -1,4 +1,4 @@
-/*** Scenes module ********************************************************
+/*** MTScenes module ********************************************************
 
 Version: 1.0.0
 -------------------------------------------------------------------------------
@@ -11,23 +11,23 @@ Copyright:
 
 // Concrete module constructor
 
-function Scenes (id, controller) {
-    Scenes.super_.call(this, id, controller);
+function MTScenes (id, controller) {
+    MTScenes.super_.call(this, id, controller);
 
 }
 
 // Module inheritance and setup
 
-inherits(Scenes, AutomationModule);
+inherits(MTScenes, AutomationModule);
 
-_module = Scenes;
+_module = MTScenes;
 
-Scenes.prototype.init = function (config) {
-    Scenes.super_.prototype.init.call(this, config);
+MTScenes.prototype.init = function (config) {
+    MTScenes.super_.prototype.init.call(this, config);
 
     var self = this;
 
-    // Load abstract ScenesDevice device class
+    // Load abstract MTScenesDevice device class
     //executeFile(this.moduleBasePath()+"/VacancesDevice.js");
     //executeFile(this.moduleBasePath()+"/SurveillanceDevice.js");
 
@@ -102,39 +102,39 @@ Scenes.prototype.init = function (config) {
 
     this.controller.on('ModeVacances', function () {
 
-        console.log("Scenes: Evt Mode Vacances");
+        console.log("MTScenes: Evt Mode Vacances");
 
 	if ( self.vdevVacances.get("metrics:level") == true ) {
-        	console.log("Scenes: Mode Vacances stoped");
+        	console.log("MTScenes: Mode Vacances stoped");
 		self.vdevVacances.performCommand("off");
 	} else {
-        	console.log("Scenes: Mode Vacances activated");
+        	console.log("MTScenes: Mode Vacances activated");
 		self.vdevVacances.performCommand("on");
 	}
     });
 
     this.controller.on('SurveillanceDesactivee', function () {
 
-        console.log("Scenes: Evt Surveillance desactivee");
+        console.log("MTScenes: Evt Surveillance desactivee");
 
 	if ( self.vdevSurveillance.get("metrics:level") == true ) {
-        	console.log("Scenes: Mode surveilance stoped");
+        	console.log("MTScenes: Mode surveilance stoped");
 		self.vdevSurveillance.performCommand("off");
 	} else {
-        	console.log("Scenes: Mode surveilance activated");
+        	console.log("MTScenes: Mode surveilance activated");
 		self.vdevSurveillance.performCommand("on");
 	}
     });
 
 };
 
-Scenes.prototype.stop = function () {
+MTScenes.prototype.stop = function () {
     var self = this;
     self.controller.devices.remove("VacancesDevice1");
     self.controller.devices.remove("SurveillanceDevice1");
 };
 
-Scenes.prototype.activeVacances = function ( output)
+MTScenes.prototype.activeVacances = function ( output)
 {
         try {
                 system("/usr/local/bin/activscene", "vacances",  output);
@@ -144,7 +144,7 @@ Scenes.prototype.activeVacances = function ( output)
         }
 }
 
-Scenes.prototype.activeSurveillance = function ( output)
+MTScenes.prototype.activeSurveillance = function ( output)
 {
         try {
                 system("/usr/local/bin/activscene", "surveillance",  output);
