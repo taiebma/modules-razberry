@@ -11,9 +11,10 @@
 
     "id": 15,
     "autoload": true,
-    "singleton": true,
     "userView": true,
     "defaults": {
+		"title": "Portail",
+		"description": "Module de gestion du portail",
                 "heureOuverture": 6,
                 "minuteOuverture": 45,
                 "heureFermeture": 0,

@@ -52,12 +52,12 @@ Meteo.prototype.init = function (config) {
         handler: function (command) {
 
     		if ("update" === command) {
-        		console.log("Nouveau releve luminosite : " + self.vdev.metrics.get("metrics:luminosity") );
-        		console.log("Nouveau releve temperature interieure : " + self.vdev.metrics.get("metrics:tempInt") );
-        		console.log("Nouveau releve temperature exterieure : " + self.vdev.metrics.get("metrics:tempExt") );
-        		console.log("Nouveau releve temperature cave : " + self.vdev.metrics.get("metrics:tempCave") );
-        		console.log("Nouveau releve forecast summary : " + self.vdev.metrics.get("metrics:forecast_summary") );
-        		console.log("Nouveau releve forecast temperature : " + self.vdev.metrics.get("metrics:forecast_temperature") );
+        		console.log("Nouveau releve luminosite : " + self.vdev.get("metrics:luminosity") );
+        		console.log("Nouveau releve temperature interieure : " + self.vdev.get("metrics:tempInt") );
+        		console.log("Nouveau releve temperature exterieure : " + self.vdev.get("metrics:tempExt") );
+        		console.log("Nouveau releve temperature cave : " + self.vdev.get("metrics:tempCave") );
+        		console.log("Nouveau releve forecast summary : " + self.vdev.get("metrics:forecast_summary") );
+        		console.log("Nouveau releve forecast temperature : " + self.vdev.get("metrics:forecast_temperature") );
     		}
         },
         moduleId: this.id
@@ -82,7 +82,7 @@ Meteo.prototype.init = function (config) {
         handler: function (command) {
 
                 if ("update" === command) {
-                        console.log("Nouveau releve temperature exterieure : " + self.vdevTempExt.metrics.get("metrics:level") );
+                        console.log("Nouveau releve temperature exterieure : " + self.vdevTempExt.get("metrics:level") );
                 }
         },
         moduleId: this.id
@@ -105,7 +105,7 @@ Meteo.prototype.init = function (config) {
         handler: function (command) {
 
                 if ("update" === command) {
-                        console.log("Nouveau releve temperature interieur : " + self.vdevTempInt.metrics.get("metrics:level") );
+                        console.log("Nouveau releve temperature interieur : " + self.vdevTempInt.get("metrics:level") );
                 }
         },
         moduleId: this.id
@@ -128,7 +128,7 @@ Meteo.prototype.init = function (config) {
         handler: function (command) {
 
                 if ("update" === command) {
-                        console.log("Nouveau releve temperature cave : " + self.vdevTempCave.metrics.get("metrics:level") );
+                        console.log("Nouveau releve temperature cave : " + self.vdevTempCave.get("metrics:level") );
                 }
         },
         moduleId: this.id
@@ -151,7 +151,7 @@ Meteo.prototype.init = function (config) {
         handler: function (command) {
 
                 if ("update" === command) {
-                        console.log("Nouveau releve temperature forecast summary : " + self.vdevFcSum.metrics.get("metrics:level") );
+                        console.log("Nouveau releve temperature forecast summary : " + self.vdevFcSum.get("metrics:level") );
                 }
         },
         moduleId: this.id
@@ -174,7 +174,7 @@ Meteo.prototype.init = function (config) {
         handler: function (command) {
 
                 if ("update" === command) {
-                        console.log("Nouveau releve temperature exterieure : " + self.vdevFcTemp.metrics.get("metrics:level") );
+                        console.log("Nouveau releve temperature exterieure : " + self.vdevFcTemp.get("metrics:level") );
                 }
         },
         moduleId: this.id
@@ -255,13 +255,18 @@ Meteo.prototype.init = function (config) {
 	self.vdevTempCave.set("metrics:level", self.releve.jmeteo.sondes[1].sonde1);
     //    self.vdev.performCommand("update");
 
-	var filePath2 = self.moduleBasePath() + "/meteo_forecast.json";
-	self.forecast = fs.loadJSON( filePath2 );
-	console.log("Mise a jour des donnees forecast:  " + self.forecast.currently.summary);
-	self.vdev.set("metrics:forecast_summary", self.forecast.currently.summary);
-	self.vdevFcSum.set("metrics:level", self.forecast.currently.summary);
-	self.vdev.set("metrics:forecast_temperature", self.forecast.currently.temperature);
-	self.vdevFcTemp.set("metrics:level", self.forecast.currently.temperature);
+	//var filePath2 = self.moduleBasePath() + "/meteo_forecast.json";
+	//self.forecast = fs.loadJSON( filePath2 );
+	//console.log("Mise a jour des donnees forecast:  " + self.forecast.currently.summary);
+	//self.vdev.set("metrics:forecast_summary", self.forecast.currently.summary);
+	//self.vdevFcSum.set("metrics:level", self.forecast.currently.summary);
+	//self.vdev.set("metrics:forecast_temperature", self.forecast.currently.temperature);
+	//self.vdevFcTemp.set("metrics:level", self.forecast.currently.temperature);
+
+        self.vdev.set("metrics:forecast_summary", controller.devices.get("ForecastIO_current_26").get("metrics:weather"));
+        self.vdevFcSum.set("metrics:level", controller.devices.get("ForecastIO_current_26").get("metrics:weather"));
+        self.vdev.set("metrics:forecast_temperature", controller.devices.get("ForecastIO_current_26").get("metrics:level"));
+        self.vdevFcTemp.set("metrics:level", controller.devices.get("ForecastIO_current_26").get("metrics:level"));
 
 	self.controller.emit("MeteoDevice1.meteoUpdated") ;
     });

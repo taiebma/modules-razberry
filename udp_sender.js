@@ -141,7 +141,7 @@ zway.devices[7].instances[2].SwitchBinary.data.level.bind(function() {
     }
 });
 
-zway.devices[15].instances[0].SensorBinary.data[1].level.bind(function() {
+zway.devices[15].instances[0].Basic.data.level.bind(function() {
     state = 'on';
     if (this.value == '0')
         state = 'off';
@@ -159,10 +159,14 @@ zway.devices[15].instances[0].SensorBinary.data[1].level.bind(function() {
         debugPrint("Failed to execute script system call: " + err);
     }
 
-   if (this.value != '0')
-   	controller.emit("AlarmPortailOuvert");
-   else
-   	controller.emit("AlarmPortailFerme");
+    if (this.value != '0') {
+        this.controller.addNotification(”info”, ”Alarm Portail Ouvert”, ”device”);
+        controller.emit("AlarmPortailOuvert");
+    }
+    else {
+        this.controller.addNotification(”info”, ”Alarm Portail Ferme, ”device”);        
+        controller.emit("AlarmPortailFerme");
+    }
 });
 
 zway.devices[8].instances[0].SwitchMultilevel.data.level.bind(function() {

@@ -44,7 +44,7 @@ AlarmDetection.prototype.init = function (config) {
 	} 
 
 	//  Surveillance activee ?
-	var surveillance = (controller.devices.get("SurveillanceDevice1").get("metrics:level") == true)? true : false;
+	var surveillance = (controller.devices.get("SurveillanceDevice1").get("metrics:level") == "on")? true : false;
 	console.log("AlarmDetection : Flag Surveillance : <" + surveillance +"> <" + controller.devices.get("SurveillanceDevice1").get("metrics:level") +">");
 	if (!surveillance) {
 		console.log("AlarmDetection : Surveillance desactivee");
@@ -52,7 +52,7 @@ AlarmDetection.prototype.init = function (config) {
 	}
 
 	//  Mode vacances
-	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == true)?true:false;
+	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == "on")?true:false;
 
 	var curDate = new Date();
 	console.log("AlarmDetection : Heure de surveillance entre " + self.config.heureDebut + "h et " + self.config.heureFin + "h");

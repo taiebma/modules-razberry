@@ -3,6 +3,8 @@
     "autoload": true,
     "singleton": true,
     "defaults": {
+		"title": "Switch All Off",
+		"description": "Module d'extinction de toutes les lumieres",
                    "heureUpdate": 2,
                    "minuteUpdate": 0,
                    "weekDay": [0, 6, 1]

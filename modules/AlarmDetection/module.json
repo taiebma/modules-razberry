@@ -11,6 +11,8 @@
     "id": 19,
     "autoload": true,
     "defaults": {
+		"title": "Detection fumee",
+		"description": "Module de detection de fumee",
                    "heureDebut": 1,
                    "minuteDebut": 0,
                    "heureFin": 6,

@@ -11,8 +11,9 @@
 
     "id": 10,
     "autoload": true,
-    "singleton": false,
     "defaults": {
+		"title": "Extinction Salon",
+		"description": "Module d'extinction des lumieres du salon",
                    "heureArret": 23,
                    "minuteArret": 0,
                    "weekDay": [0, 6, 1]

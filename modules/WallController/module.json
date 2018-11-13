@@ -11,8 +11,9 @@
 
     "id": 16,
     "autoload": true,
-    "singleton": true,
     "defaults": {
+		"title": "Wall Controller",
+		"description": "Module de gestion du bouton flottant",
                 "seuilLuminosite": 200 ,
                 "heureDebut": 17,
                 "minuteDebut": 0,
