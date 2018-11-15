@@ -22,7 +22,7 @@
                 "weekDayOpen": [1, 5, 1],
                 "weekDayClose": [0, 6, 1],
                 "alarme": "ZWayVDev_zway_6-0-48-1",
-		"ferieDevice": "ZWayVDev_zway_34-0-37-6",
+		"ferieDevice": "ZWayVDev_zway_18-0-37-6",
                 "urlPortailOpen": "http://10.1.10.52/status.xml?pl1=1",
                 "urlPortailClose": "http://10.1.10.52/status.xml?pl1=1",
                 "urlPortailPartial": "http://10.1.10.52/status.xml?pl2=1",
