@@ -7,7 +7,7 @@
  -----------------------------------------------------------------------------
  Author: Marc TAIEB <taiebma@free.fr>
  Description:
-    Module permettant de gÃerer un mode vacance
+    Module permettant de gï¿½erer un mode vacance
 
 ******************************************************************************/
 
@@ -51,12 +51,12 @@ VacancesDevice.prototype.performCommand = function (command) {
 
     if ("on" === command) {
 	console.log("VacancesDevice: Mode vacances on");
-    	self.setMetricValue("modeVacances", true);
+    	self.setMetricValue("modeVacances", "on");
 	self.modeVacances = true;
 	activeVacances("on");
     } else if ("off" === command) {
 	console.log("VacancesDevice: Mode vacances off");
-    	self.setMetricValue("modeVacances", false);
+    	self.setMetricValue("modeVacances", "off");
 	self.modeVacances = false;
 	activeVacances("off");
     } else {

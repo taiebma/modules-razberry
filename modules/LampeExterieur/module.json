@@ -11,8 +11,9 @@
 
     "id": 17,
     "autoload": true,
-    "singleton": true,
     "defaults": {
+		"title": "Lampe Exterieur",
+		"description": "Module de gestion de la lumiere exterieure",
                 "heureDebut": 18,
                 "minuteDebut": 0,
                 "heureFin": 23,

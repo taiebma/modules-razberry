@@ -11,8 +11,9 @@
 
     "id": 21,
     "autoload": true,
-    "singleton": true,
     "defaults": {
+		"title": "Vacances",
+		"description": "Module de gestion du mode vacances",
                 "seuilLuminosite": 130,
                 "heureDebut": 17,
                 "minuteDebut": 0,

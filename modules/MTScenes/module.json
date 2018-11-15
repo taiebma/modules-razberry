@@ -11,9 +11,10 @@
 
     "id": 20,
     "autoload": true,
-    "singleton": true,
     "userView": true,
     "defaults": {
+	"title": "MTScenes",
+	"description": "Module de gestion des scenes"
     },
     "actions": {},
     "metrics": {}

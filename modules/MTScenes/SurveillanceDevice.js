@@ -53,12 +53,12 @@ SurveillanceDevice.prototype.performCommand = function (command) {
 
     if ("on" === command) {
 	console.log("SurveillanceDevice: Surveillance on");
-    	self.setMetricValue("surveillance", true);
+    	self.setMetricValue("surveillance", "on");
 	self.surveillance = true;
 	activeSurbeillance("on");
     } else if ("off" === command) {
 	console.log("SurveillanceDevice: Surveillance off");
-    	self.setMetricValue("surveillance", false);
+    	self.setMetricValue("surveillance", "off");
 	self.surveillance = false;
 	activeSurbeillance("off");
     } else {

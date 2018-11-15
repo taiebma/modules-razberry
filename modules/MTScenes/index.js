@@ -35,10 +35,12 @@ MTScenes.prototype.init = function (config) {
         deviceId: "VacancesDevice1",
         defaults: {
             deviceType: "switchBinary",
+            probeType: "scene",
             metrics: {
+                probeTitle: "Control",
+                icon: "switch",
                 title: 'Vacances Device ' + this.id,
-		level: "false",
-                icon: ""
+        		level: "off"
             }
         },
         overlay: {},
@@ -46,11 +48,11 @@ MTScenes.prototype.init = function (config) {
 
     		if ("on" === command) {
         		console.log("VacancesDevice: Mode vacances on");
-        		self.vdevVacances.set( "metrics:level", true);
+        		self.vdevVacances.set( "metrics:level", "on");
         		self.activeVacances("on");
     		} else if ("off" === command) {
         		console.log("VacancesDevice: Mode vacances off");
-        		self.vdevVacances.set( "metrics:level", false);
+        		self.vdevVacances.set( "metrics:level", "off");
         		self.activeVacances("off");
     		}
         },
@@ -63,18 +65,16 @@ MTScenes.prototype.init = function (config) {
 
     console.log("Enregistrement de VacancesDevice : " + this.vdevVacances.id);
 
-    //this.vdevSurveillance = new SurveillanceDevice("SurveillanceDevice1", this.controller, this.moduleBasePath());
-    //this.vdevSurveillance.init();
-    //this.controller.registerDevice(this.vdevSurveillance);
-
     this.vdevSurveillance = this.controller.devices.create({
         deviceId: "SurveillanceDevice1",
         defaults: {
             deviceType: "switchBinary",
+            probeType: "scene",
             metrics: {
-                title: 'Surveillance Device ' + this.id,
-                level: "true",
-                icon: ""
+               probeTitle: "Control",
+               title: 'Surveillance Device ' + this.id,
+                level: "on",
+                icon: "switch"
             }
         },
         overlay: {},
@@ -82,11 +82,11 @@ MTScenes.prototype.init = function (config) {
 
                 if ("on" === command) {
                         console.log("SurveillanceDevice: Surveillance on");
-                        self.vdevSurveillance.set("metrics:level", true);
+                        self.vdevSurveillance.set("metrics:level", "on");
                         self.activeSurveillance("on");
                 } else if ("off" === command) {
                         console.log("SurveillanceDevice: Surveillance off");
-                        self.vdevSurveillance.set("metrics:level", false);
+                        self.vdevSurveillance.set("metrics:level", "off");
                         self.activeSurveillance("off");
                 }
         },
@@ -104,26 +104,26 @@ MTScenes.prototype.init = function (config) {
 
         console.log("MTScenes: Evt Mode Vacances");
 
-	if ( self.vdevVacances.get("metrics:level") == true ) {
-        	console.log("MTScenes: Mode Vacances stoped");
-		self.vdevVacances.performCommand("off");
-	} else {
-        	console.log("MTScenes: Mode Vacances activated");
-		self.vdevVacances.performCommand("on");
-	}
+        if ( self.vdevVacances.get("metrics:level") == "on" ) {
+                console.log("MTScenes: Mode Vacances stoped");
+            self.vdevVacances.performCommand("off");
+        } else {
+                console.log("MTScenes: Mode Vacances activated");
+            self.vdevVacances.performCommand("on");
+        }
     });
 
     this.controller.on('SurveillanceDesactivee', function () {
 
         console.log("MTScenes: Evt Surveillance desactivee");
 
-	if ( self.vdevSurveillance.get("metrics:level") == true ) {
-        	console.log("MTScenes: Mode surveilance stoped");
-		self.vdevSurveillance.performCommand("off");
-	} else {
-        	console.log("MTScenes: Mode surveilance activated");
-		self.vdevSurveillance.performCommand("on");
-	}
+        if ( self.vdevSurveillance.get("metrics:level") == "on" ) {
+                console.log("MTScenes: Mode surveilance stoped");
+            self.vdevSurveillance.performCommand("off");
+        } else {
+                console.log("MTScenes: Mode surveilance activated");
+            self.vdevSurveillance.performCommand("on");
+        }
     });
 
 };

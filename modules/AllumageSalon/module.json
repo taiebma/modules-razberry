@@ -11,8 +11,9 @@
 
     "id": 9,
     "autoload": true,
-    "singleton": true,
     "defaults": {
+		"title": "Allumage salon",
+		"description": "Module d'allumage du salon",
                 "seuilLuminosite": 130,
                 "heureDebut": 16,
                 "minuteDebut": 0,

@@ -48,7 +48,7 @@ function StoreSalon (id, controller) {
    this.tempExt = 0;
    this.modeChaleur  = false;
 
-    this.scene = 1;  //  1 = nuit, 2 = journÃee, 3 = chaleur
+    this.scene = 1;  //  1 = nuit, 2 = journï¿½ee, 3 = chaleur
 
     var curDate1 = new Date();
     this.dateDebutJournee = new Date( curDate1.getFullYear(), curDate1.getMonth(), curDate1.getDate(), this.config.heureOuverture, this.config.minuteOuverture, 0);
@@ -101,18 +101,6 @@ StoreSalon.prototype.init = function (config) {
     console.log("StoreSalon : mode nuit " + self.modeNuit);
     console.log("StoreSalon : fait nuit " + self.faitNuit);
     console.log("StoreSalon : scene " + self.scene);
-
-    //  Evenement mode vacances
-/*
-    this.controller.on('ModeVacances', function () {
-	if (self.modeVacances)
-		self.modeVacances = false;
-	else
-		self.modeVacances = true;
-
-    	console.log("StoreSalon : Mode Vacances " + self.modeVacances);
-    });
-*/
 
     //  Evenement pour ouverture des stores
     this.controller.on('StoreSalon.Ouverture.poll', function () {
@@ -177,7 +165,7 @@ StoreSalon.prototype.init = function (config) {
         console.log("StoreSalon : Evenement de fermeture des tores");
 
 	//  En mode vacances on touche pas aux stores
-	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == true)?true:false;
+	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == "on")?true:false;
         console.log("StoreSalon : Fermeture des stores mode vacances = " + self.modeVacances);
 	if (self.modeVacances)
 		return;
@@ -205,7 +193,7 @@ StoreSalon.prototype.init = function (config) {
         console.log("StoreSalon : Evenement d'ouveture des tores");
 
 	//  En mode vacances on ouvre pas
-	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == true)?true:false;
+	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == "on")?true:false;
 	if (self.modeVacances)
 		return;
 
@@ -251,11 +239,11 @@ StoreSalon.prototype.init = function (config) {
 	//  Verification condition meteo
 	console.log("StoreSalon : Ciel " + self.ciel + " Temperature exterieur " + self.tempExt + " heure " + curDate1.getHours());
 	if (self.ciel == "Clear" && self.tempExt > 24.0 && curDate1.getHours()  >16 ) {
-		if (!self.modeChaleur) { //  Pas encore baissÃe le store
+		if (!self.modeChaleur) { //  Pas encore baissï¿½e le store
     			console.log("StoreSalon : Forte chaleur et forte luminosite faux fermer le store");
 
 			//  En mode vacances on touche pas aux stores
-			self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == true)?true:false;
+			self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == "on")?true:false;
 			if (self.modeVacances)
 				return;
 

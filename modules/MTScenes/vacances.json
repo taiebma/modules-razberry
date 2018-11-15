@@ -1,1 +1,3 @@
-/var/lib/zway/vacances
+{
+	"vacances": "false"
+}

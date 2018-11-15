@@ -15,6 +15,8 @@
     "userView": true,
     "seuilLuminosite": 100,
     "defaults": {
+		"title": "Meteo",
+		"description": "Module de gestion de la meteo",
                 "device": "CapteurLuminosite",
                 "interval": 2
     },

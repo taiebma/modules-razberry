@@ -90,7 +90,7 @@ Vacances.prototype.init = function (config) {
     });
 
     this.controller.on('AllumageCuisine', function () {
-	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == true)?true:false;
+	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == "on")?true:false;
 	//  On ne fait rien si on est pas en mode vacances
 	if (!self.modeVacances)
 		return;
@@ -154,7 +154,7 @@ Vacances.prototype.init = function (config) {
 	//  Arret du cron
     	self.controller.emit("cron.removeTask", "VacancesArret.poll" );
 
-	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == true)?true:false;
+	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == "on")?true:false;
 	//  On ne fait rien si on est pas en mode vacances
 	if (self.modeVacances) {
    		zway.devices[8].instances[0].commandClasses[38].Set(0);
@@ -183,7 +183,7 @@ Vacances.prototype.init = function (config) {
 	//  Arret du cron
     	self.controller.emit("cron.removeTask", "VacancesArretTotal.poll" );
 
-	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == true)?true:false;
+	self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == "on")?true:false;
 	if (self.modeVacances) {
 		self.controller.emit("ActivationSceneDoubleDimUpStop");
 	}

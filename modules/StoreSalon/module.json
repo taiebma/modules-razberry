@@ -11,9 +11,10 @@
 
     "id": 13,
     "autoload": true,
-    "singleton": true,
     "userView": true,
     "defaults": {
+		"title": "Store Salon",
+		"description": "Module de gestion des stores du salon",
                 "seuilLuminosite": 80,
                 "seuilForteLuminosite": 800,
                 "seuilChaleur": 27,

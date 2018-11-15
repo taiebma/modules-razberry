@@ -11,8 +11,9 @@
 
     "id": 12,
     "autoload": true,
-    "singleton": true,
     "defaults": {
+		"title": "Update All",
+		"description": "Module de mise à jour des status des lumieres",
                    "heureUpdate": 2,
                    "minuteUpdate": 0,
                    "weekDay": [0, 6, 1]

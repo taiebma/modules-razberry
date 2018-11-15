@@ -68,7 +68,7 @@ FibSensor1.prototype.init = function (config) {
 		if (id === self.config.alarme) {
 			if (value == "on") {
 				self.controller.emit("Alarme", 1);
-   				console.log("FibSensor1 : Alarme déclenchée en zone 1");
+   				console.log("FibSensor1 : Alarme dï¿½clenchï¿½e en zone 1");
 			}
 			else {
 				self.controller.emit("AlarmeOff", 1);
@@ -79,16 +79,16 @@ FibSensor1.prototype.init = function (config) {
 			self.attribute["temperature"] = value;
    			console.log("FibSensor1 : Temperature = " + self.attribute["temperature"]);
 		}
-/*
-	if (id == self.config.forecast) {
-		console.log("Verification forecast");
-		if (name == "forecast_summary" && value == "DÃ©gagÃ©")
-			self.attribute["soleil"] = true;
-		if (name == "forecast_temperature" )
-			self.attribute["forecast_temperature"] = value;
-	}
-*/
 
+		if (id === self.config.PortailDev) {
+			if (value == "on") {
+				console.log("FibSensor1 : Portail ouvert");
+				self.controller.emit("AlarmPortailOuvert");
+			} else {
+				console.log("FibSensor1 : Portail ferme");
+				self.controller.emit("AlarmPortailFerme");
+			}
+		}
 	};
 
     this.controller.devices.on('change:metrics:level', self.metricUpdated);
