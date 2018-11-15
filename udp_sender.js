@@ -141,7 +141,7 @@ zway.devices[7].instances[2].SwitchBinary.data.level.bind(function() {
     }
 });
 
-zway.devices[15].instances[0].SensorBinary.data[1].level.bind(function() {
+zway.devices[15].instances[0].Basic.data.level.bind(function() {
     state = 'on';
     if (this.value == '0')
         state = 'off';
@@ -159,10 +159,14 @@ zway.devices[15].instances[0].SensorBinary.data[1].level.bind(function() {
         debugPrint("Failed to execute script system call: " + err);
     }
 
-   if (this.value != '0')
-   	controller.emit("AlarmPortailOuvert");
-   else
-   	controller.emit("AlarmPortailFerme");
+    if (this.value != '0') {
+        this.controller.addNotification(”info”, ”Alarm Portail Ouvert”, ”device”);
+        controller.emit("AlarmPortailOuvert");
+    }
+    else {
+        this.controller.addNotification(”info”, ”Alarm Portail Ferme, ”device”);        
+        controller.emit("AlarmPortailFerme");
+    }
 });
 
 zway.devices[8].instances[0].SwitchMultilevel.data.level.bind(function() {
@@ -225,52 +229,3 @@ zway.devices[10].instances[0].SwitchMultilevel.data.level.bind(function() {
     }
 });
 
-/*
-zway.devices[3].instances[1].commandClasses.SensorBinary.data[1].level.bind(function() {
-    eventString = 'Device_3_Instance_1';
-    try {
-        system(
-            "python /home/pi/Desktop/network_send.py",
-            eventString,
-            this.value,
-            zone,
-            port
-        );
-        return;
-    } catch(err) {
-        debugPrint("Failed to execute script system call: " + err);
-    }
-});
-
-zway.devices[3].instances[2].commandClasses.SensorBinary.data[1].level.bind(function() {
-    eventString = 'Device_3_Instance_2';
-    try {
-        system(
-            "python /home/pi/Desktop/network_send.py",
-            eventString,
-            this.value,
-            zone,
-            port
-        );
-        return;
-    } catch(err) {
-        debugPrint("Failed to execute script system call: " + err);
-    }
-});
-
-zway.devices[3].instances[3].commandClasses.SensorMultilevel.data[1].val.bind(function() {
-    eventString = 'Device_3_Instance_3_temperature'
-    try {
-        system(
-            "python /home/pi/Desktop/network_send.py",
-            eventString,
-            this.value,
-            zone,
-            port
-        );
-        return;
-    } catch(err) {
-        debugPrint("Failed to execute script system call: " + err);
-    }
-});
-*/
