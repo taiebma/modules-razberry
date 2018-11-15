@@ -1,1 +1,13 @@
-/var/lib/jmeteo/meteo.xml
+{ 
+ "jmeteo": {
+  "releve": {
+   "luminosite": "273",
+   "date_releve": "1900/01/00 00:00:00"
+  },
+  "sondes": [
+   { "sonde0": " 9.88" },
+   { "sonde1": "19.31" },
+   { "sondeend": "" }
+  ]
+ }
+}

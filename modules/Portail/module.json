@@ -8,28 +8,34 @@
     "moduleName": "Portail",
     "version": "1.0.0",
     "maturity": "stable",
-
     "id": 15,
     "autoload": true,
     "userView": true,
     "defaults": {
-		"title": "Portail",
-		"description": "Module de gestion du portail",
-                "heureOuverture": 6,
-                "minuteOuverture": 45,
-                "heureFermeture": 0,
-                "minuteFermeture": 0,
-                "weekDayOpen": [1, 5, 1],
-                "weekDayClose": [0, 6, 1],
-                "alarme": "ZWayVDev_zway_6-0-48-1",
-		"ferieDevice": "ZWayVDev_zway_18-0-37-6",
-                "urlPortailOpen": "http://10.1.10.52/status.xml?pl1=1",
-                "urlPortailClose": "http://10.1.10.52/status.xml?pl1=1",
-                "urlPortailPartial": "http://10.1.10.52/status.xml?pl2=1",
-                    "map": [
-                        {
-                        }
-                        ]
+        "title": "Portail",
+        "description": "Module de gestion du portail",
+        "heureOuverture": 6,
+        "minuteOuverture": 45,
+        "heureFermeture": 0,
+        "minuteFermeture": 0,
+        "weekDayOpen": [
+            1,
+            5,
+            1
+        ],
+        "weekDayClose": [
+            0,
+            6,
+            1
+        ],
+        "alarme": "ZWayVDev_zway_5-0-48-1",
+        "ferieDevice": "JourFerie",
+        "urlPortailOpen": "http://10.1.10.52/status.xml?pl1=1",
+        "urlPortailClose": "http://10.1.10.52/status.xml?pl1=1",
+        "urlPortailPartial": "http://10.1.10.52/status.xml?pl2=1",
+        "map": [
+            {}
+        ]
     },
     "actions": {},
     "metrics": {}
