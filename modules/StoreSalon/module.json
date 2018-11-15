@@ -8,32 +8,34 @@
     "moduleName": "StoreSalon",
     "version": "1.0.0",
     "maturity": "stable",
-
     "id": 13,
     "autoload": true,
     "userView": true,
     "defaults": {
-		"title": "Store Salon",
-		"description": "Module de gestion des stores du salon",
-                "seuilLuminosite": 80,
-                "seuilForteLuminosite": 800,
-                "seuilChaleur": 27,
-                "intervalAttente": 3000,
-                "intervalSelectAttente": 1000,
-                "heureOuverture": 7,
-                "minuteOuverture": 0,
-                "heureFermeture": 16,
-                "minuteFermeture": 0,
-                "weekDay": [0, 6, 1],
-                "urlStoreStop": "http://10.1.10.52/status.xml?pl6=1",
-                "urlStoreSelect": "http://10.1.10.52/status.xml?pl5=1",
-                "urlStoreUp": "http://10.1.10.52/status.xml?pl7=1",
-                "urlStoreDown": "http://10.1.10.52/status.xml?pl8=1",
-		"nbChannel": 4,
-                    "map": [
-                        {
-                        }
-                        ]
+        "title": "Store Salon",
+        "description": "Module de gestion des stores du salon",
+        "seuilLuminosite": 80,
+        "seuilForteLuminosite": 800,
+        "seuilChaleur": 27,
+        "intervalAttente": 3000,
+        "intervalSelectAttente": 1000,
+        "heureOuverture": 7,
+        "minuteOuverture": 0,
+        "heureFermeture": 16,
+        "minuteFermeture": 0,
+        "weekDay": [
+            0,
+            6,
+            1
+        ],
+        "urlStoreStop": "http://10.1.10.52/status.xml?pl6=1",
+        "urlStoreSelect": "http://10.1.10.52/status.xml?pl5=1",
+        "urlStoreUp": "http://10.1.10.52/status.xml?pl7=1",
+        "urlStoreDown": "http://10.1.10.52/status.xml?pl8=1",
+        "nbChannel": 4,
+        "map": [
+            {}
+        ]
     },
     "actions": {},
     "metrics": {}
