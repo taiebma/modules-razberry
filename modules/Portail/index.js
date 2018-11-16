@@ -43,6 +43,8 @@ function Portail(id, controller) {
 
     console.log("Enregistrement de PortailDevice : " + this.vdev.id);
 
+    controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").set("metrics:level", "off");
+    
     this.ouvert = true;
     this.modeVacances = false;
 }
