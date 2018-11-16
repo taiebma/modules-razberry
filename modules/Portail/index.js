@@ -153,7 +153,7 @@ Portail.prototype.init = function (config) {
 
         //  En mode vacances ou en jour ferie, on touche pas aux portail
         self.modeVacances = (controller.devices.get("VacancesDevice1").get("metrics:level") == "on") ? true : false;
-        self.jourFerie = (controller.devices.get(self.config.ferieDevice).get("metrics:level") == "on") ? true : false;
+        self.jourFerie = (controller.devices.get("JourFerie").get("metrics:level") == "on") ? true : false;
         if (self.modeVacances || self.jourFerie)
             return;
 
