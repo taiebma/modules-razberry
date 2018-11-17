@@ -67,7 +67,8 @@ Portail.prototype.performCommand = function (command) {
 
 		console.log("PortailDevice: Ouverture complete du portail");
 
-		if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "off") {
+		if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "off" 
+			|| controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "") {
 			//  ouverture du store
 			console.log("PortailDevice: Open");
 			console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailOpen);
@@ -80,7 +81,8 @@ Portail.prototype.performCommand = function (command) {
 
 			//  On verifie qu'il est bien ouvert sinon on recommence
 			self.timer = setTimeout(function () {
-				if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "off") {
+				if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "off" 
+					|| controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "") {
 					console.log("PortailDevice: Devait etre a moitie ouvert on ouvre");
 					console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailOpen);
 
@@ -103,7 +105,8 @@ Portail.prototype.performCommand = function (command) {
 
 		console.log("PortailDevice: Fermeture du portail ");
 
-		if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "on") {
+		if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "on"
+			|| controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "") {
 			console.log("PortailDevice: Close");
 			console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailClose);
 
@@ -115,7 +118,8 @@ Portail.prototype.performCommand = function (command) {
 
 			//  On verifie qu'il est bien ferme sinon on recommence
 			self.timer = setTimeout(function () {
-				if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "on") {
+				if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "on"
+					|| controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "") {
 					console.log("PortailDevice: Devait etre a moitie ouvert on referme");
 					console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailClose);
 
