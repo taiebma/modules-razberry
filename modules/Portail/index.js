@@ -43,8 +43,6 @@ function Portail(id, controller) {
 
     console.log("Enregistrement de PortailDevice : " + this.vdev.id);
 
-    controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").set("metrics:level", "off");
-    
     this.ouvert = true;
     this.modeVacances = false;
 }
@@ -236,6 +234,10 @@ Portail.prototype.init = function (config) {
 
         self.vdev.set("metrics:level", "off");
     });
+
+    //  Preinitialisation en cas de reboot
+    controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").set("metrics:level", "off");
+    
 };
 
 // ----------------------------------------------------------------------------
