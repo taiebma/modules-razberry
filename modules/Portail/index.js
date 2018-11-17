@@ -236,7 +236,7 @@ Portail.prototype.init = function (config) {
     });
 
     //  Preinitialisation en cas de reboot
-    controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").set("metrics:level", "off");
+    //controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").set("metrics:level", "off");
     
 };
 
