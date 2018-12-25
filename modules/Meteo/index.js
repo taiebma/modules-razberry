@@ -194,8 +194,21 @@ Meteo.prototype.init = function (config) {
     });
 
     this.vdevFerie.set("metrics:level", self.JoursFeries());
-
     console.log("MeteoDevice : Jour ferie " + this.vdevFerie.get("metrics:level"));
+
+    this.controller.on('Ferie.poll', function () {
+        this.vdevFerie.set("metrics:level", self.JoursFeries());
+        console.log("MeteoDevice : Jour ferie " + this.vdevFerie.get("metrics:level"));
+    });
+
+    //  Programmation du cron pour le prochain calcul de jour feries
+    self.controller.emit("cron.addTask", "Ferie.poll", {
+        minute: 5,
+        hour: 0,
+        weekDay: [0, 1, 2, 3, 4, 5, 6],
+        day: null,
+        month: null
+    });
 
     this.releve = {};
     this.forecast = {};
