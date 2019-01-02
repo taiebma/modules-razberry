@@ -204,7 +204,7 @@ Meteo.prototype.init = function (config) {
         self.controller.emit("cron.addTask", "Ferie.poll", {
             minute: 5,
             hour: 0,
-            weekDay: null,
+            weekDay: [ 0, 6, 1],
             day: null,
             month: null
         });
@@ -214,7 +214,7 @@ Meteo.prototype.init = function (config) {
     self.controller.emit("cron.addTask", "Ferie.poll", {
         minute: 5,
         hour: 0,
-        weekDay: null,
+        weekDay: [ 0, 6, 1],
         day: null,
         month: null
     });

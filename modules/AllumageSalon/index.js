@@ -81,10 +81,10 @@ AllumageSalon.prototype.init = function (config) {
     this.controller.on('AllumageSalon.poll', function () {
 
 	//  Arret du cron
-    	self.controller.emit("cron.removeTask", "AllumageSalon.poll" );
+	self.controller.emit("cron.removeTask", "AllumageSalon.poll" );
 
 	//  Calcul du prochain test
-    	var curDate1 = new Date();
+	var curDate1 = new Date();
 	var dateFin = new Date( curDate1.getFullYear(), curDate1.getMonth(), curDate1.getDate(), self.config.heureFin, self.config.minuteFin, 0);
 	var prochainTest = new Date(curDate1.getTime() + (self.config.interval * 60*1000));
 
@@ -94,14 +94,14 @@ AllumageSalon.prototype.init = function (config) {
 		self.itsTime = true;
 
 		//  Programmation du cron pour le prochain test
-    		self.controller.emit("cron.addTask", "AllumageSalon.poll", {
-        		minute: prochainTest.getMinutes(),
-       			hour: prochainTest.getHours(), 
-       			weekDay: [ 0, 6, 1],
-       			day: null,
-       			month: null
-    		});
-    		console.log("AllumageSalon : Prochain allumage dans " + self.config.interval + " minutes, a " + prochainTest.getHours() + ":" + prochainTest.getMinutes());
+		self.controller.emit("cron.addTask", "AllumageSalon.poll", {
+			minute: prochainTest.getMinutes(),
+			hour: prochainTest.getHours(), 
+			weekDay: [ 0, 6, 1],
+			day: null,
+			month: null
+		});
+		console.log("AllumageSalon : Prochain allumage dans " + self.config.interval + " minutes, a " + prochainTest.getHours() + ":" + prochainTest.getMinutes());
 
 
 		//  Allumage des lumieres
@@ -115,13 +115,13 @@ AllumageSalon.prototype.init = function (config) {
 	else {  //  on programme pour le lendemain
 		console.log("AllumageSalon : On reprendra demain a " + self.config.heureDebut + ":00");
 		self.itsTime = false;
-    		self.controller.emit("cron.addTask", "AllumageSalon.poll", {
-        		minute: 0,
-       			hour: self.config.heureDebut,
-       			weekDay: [ 0, 6, 1],
-       			day: null,
-       			month: null
-    		});
+		self.controller.emit("cron.addTask", "AllumageSalon.poll", {
+			minute: 0,
+			hour: self.config.heureDebut,
+			weekDay: [ 0, 6, 1],
+			day: null,
+			month: null
+		});
 	}
     });
 
