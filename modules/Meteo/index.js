@@ -197,30 +197,35 @@ Meteo.prototype.init = function (config) {
     console.log("MeteoDevice : Jour ferie " + this.vdevFerie.get("metrics:level"));
 
     //  Programmation du cron pour le prochain calcul de jour feries
-    self.controller.emit("cron.addTask", "Ferie.poll", {
+    this.controller.emit("cron.addTask", "Ferie.poll", {
         minute: 5,
         hour: 0,
-        weekDay: [ 0, 6, 1],
+        weekDay: null,
         day: null,
         month: null
     });
 
     this.controller.on('Ferie.poll', function () {
  
-       self.controller.emit("cron.removeTask", "Ferie.poll");
+       this.controller.emit("cron.removeTask", "Ferie.poll");
 
        this.vdevFerie.set("metrics:level", self.JoursFeries());
        console.log("MeteoDevice : Jour ferie " + this.vdevFerie.get("metrics:level"));
  
         //  Programmation du cron pour le prochain calcul de jour feries
-        self.controller.emit("cron.addTask", "Ferie.poll", {
-            minute: 5,
-            hour: 0,
-            weekDay: [ 0, 6, 1],
-            day: null,
-            month: null
-        });
-   });
+        self.timer = setTimeout(function () {
+
+            console.log("Ferie : Reprogrammation pour le lendemain");
+            this.controller.emit("cron.addTask", "Ferie.poll", {
+                    minute: 5,
+                    hour: 0,
+                    weekDay: null,
+                    day: null,
+                    month: null
+                });
+                self.timer = null;
+        }, 60 * 1000);
+    });
 
     this.releve = {};
     this.forecast = {};
