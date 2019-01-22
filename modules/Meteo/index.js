@@ -207,16 +207,16 @@ Meteo.prototype.init = function (config) {
 
     this.controller.on('Ferie.poll', function () {
  
-       this.controller.emit("cron.removeTask", "Ferie.poll");
+       self.controller.emit("cron.removeTask", "Ferie.poll");
 
-       this.vdevFerie.set("metrics:level", self.JoursFeries());
-       console.log("MeteoDevice : Jour ferie " + this.vdevFerie.get("metrics:level"));
+       self.vdevFerie.set("metrics:level", self.JoursFeries());
+       console.log("MeteoDevice : Jour ferie " + self.vdevFerie.get("metrics:level"));
  
         //  Programmation du cron pour le prochain calcul de jour feries
         self.timer = setTimeout(function () {
 
             console.log("Ferie : Reprogrammation pour le lendemain");
-            this.controller.emit("cron.addTask", "Ferie.poll", {
+            self.controller.emit("cron.addTask", "Ferie.poll", {
                     minute: 5,
                     hour: 0,
                     weekDay: null,
