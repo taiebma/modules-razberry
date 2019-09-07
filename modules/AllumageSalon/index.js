@@ -61,18 +61,18 @@ AllumageSalon.prototype.init = function (config) {
 
     //  Evenement de mise a jour d'evement
     this.controller.on('ModeNuit', function () {
-	self.modeNuit = true;
-   	console.log("AllumageSalon : Mode nuit = " + self.modeNuit);
-	if (self.itsTime) 
-		self.controller.emit("AllumageLumieres");
+		self.modeNuit = true;
+		console.log("AllumageSalon : Mode nuit = " + self.modeNuit);
+		if (self.itsTime) 
+			self.controller.emit("AllumageLumieres");
     });
     this.controller.on('ModeJour', function () {
-	self.modeNuit = false;
-   	console.log("AllumageSalon : Mode nuit = " + self.modeNuit);
+		self.modeNuit = false;
+		console.log("AllumageSalon : Mode nuit = " + self.modeNuit);
     });
 
     this.controller.on('AllumageLumieres', function () {
-	if (zway.devices[2].instances[0].SwitchBinary.data.level.value === false || zway.devices[3].instances[0].SwitchBinary.data.level.value === false) {
+	if (zway.devices[3].instances[0].SwitchBinary.data.level.value === false) {
    		zway.devices[2].instances[0].commandClasses[37].Set(true);
     		zway.devices[3].instances[0].commandClasses[37].Set(true);
 	}
