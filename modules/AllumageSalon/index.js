@@ -80,49 +80,49 @@ AllumageSalon.prototype.init = function (config) {
 
     this.controller.on('AllumageSalon.poll', function () {
 
-	//  Arret du cron
-	self.controller.emit("cron.removeTask", "AllumageSalon.poll" );
+		//  Arret du cron
+		self.controller.emit("cron.removeTask", "AllumageSalon.poll" );
 
-	//  Calcul du prochain test
-	var curDate1 = new Date();
-	var dateFin = new Date( curDate1.getFullYear(), curDate1.getMonth(), curDate1.getDate(), self.config.heureFin, self.config.minuteFin, 0);
-	var prochainTest = new Date(curDate1.getTime() + (self.config.interval * 60*1000));
+		//  Calcul du prochain test
+		var curDate1 = new Date();
+		var dateFin = new Date( curDate1.getFullYear(), curDate1.getMonth(), curDate1.getDate(), self.config.heureFin, self.config.minuteFin, 0);
+		var prochainTest = new Date(curDate1.getTime() + (self.config.interval * 60*1000));
 
-	//  Verification heure de fin d'allumage atteinte
-	if (curDate1 < dateFin) {
+		//  Verification heure de fin d'allumage atteinte
+		if (curDate1 < dateFin) {
 
-		self.itsTime = true;
+			self.itsTime = true;
 
-		//  Programmation du cron pour le prochain test
-		self.controller.emit("cron.addTask", "AllumageSalon.poll", {
-			minute: prochainTest.getMinutes(),
-			hour: prochainTest.getHours(), 
-			weekDay: [ 0, 6, 1],
-			day: null,
-			month: null
-		});
-		console.log("AllumageSalon : Prochain allumage dans " + self.config.interval + " minutes, a " + prochainTest.getHours() + ":" + prochainTest.getMinutes());
+			//  Programmation du cron pour le prochain test
+			self.controller.emit("cron.addTask", "AllumageSalon.poll", {
+				minute: prochainTest.getMinutes(),
+				hour: prochainTest.getHours(), 
+				weekDay: [ 0, 6, 1],
+				day: null,
+				month: null
+			});
+			console.log("AllumageSalon : Prochain allumage dans " + self.config.interval + " minutes, a " + prochainTest.getHours() + ":" + prochainTest.getMinutes());
 
 
-		//  Allumage des lumieres
-		if (self.modeNuit) {
-			console.log("AllumageSalon : Allumage des lumieres du salon");
-			self.controller.emit("AllumageLumieres");
+			//  Allumage des lumieres
+			if (self.modeNuit) {
+				console.log("AllumageSalon : Allumage des lumieres du salon");
+				self.controller.emit("AllumageLumieres");
+			}
+			else
+				console.log("AllumageSalon : Pas la peine d'allumer le salon");
 		}
-		else
-			console.log("AllumageSalon : Pas la peine d'allumer le salon");
-	}
-	else {  //  on programme pour le lendemain
-		console.log("AllumageSalon : On reprendra demain a " + self.config.heureDebut + ":00");
-		self.itsTime = false;
-		self.controller.emit("cron.addTask", "AllumageSalon.poll", {
-			minute: 0,
-			hour: self.config.heureDebut,
-			weekDay: [ 0, 6, 1],
-			day: null,
-			month: null
-		});
-	}
+		else {  //  on programme pour le lendemain
+			console.log("AllumageSalon : On reprendra demain a " + self.config.heureDebut + ":00");
+			self.itsTime = false;
+			self.controller.emit("cron.addTask", "AllumageSalon.poll", {
+				minute: 0,
+				hour: self.config.heureDebut,
+				weekDay: [ 0, 6, 1],
+				day: null,
+				month: null
+			});
+		}
     });
 
 };
