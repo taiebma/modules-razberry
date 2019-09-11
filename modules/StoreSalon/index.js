@@ -74,7 +74,7 @@ function StoreSalon(id, controller) {
     var curDate1 = new Date();
     this.dateDebutJournee = new Date(curDate1.getFullYear(), curDate1.getMonth(), curDate1.getDate(), this.config.heureOuverture, this.config.minuteOuverture, 0);
     this.dateFinJournee = new Date(curDate1.getFullYear(), curDate1.getMonth(), curDate1.getDate(), this.config.heureFermeture, this.config.minuteFermeture, 0);
-    if (curDate1 > this.config.dateDebutJournee && curDate1 < this.config.dateFinJournee) {
+    if (curDate1 > this.dateDebutJournee && curDate1 < this.dateFinJournee) {
         this.modeNuit = false;
         this.scene = 2;
     } else {

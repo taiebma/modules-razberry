@@ -18,7 +18,7 @@
         "seuilForteLuminosite": 800,
         "seuilChaleur": 27,
         "intervalAttente": 3000,
-        "intervalSelectAttente": 1000,
+        "intervalSelectAttente": 2000,
         "heureOuverture": 7,
         "minuteOuverture": 0,
         "heureFermeture": 16,
