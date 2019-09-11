@@ -200,7 +200,7 @@ StoreSalon.prototype.init = function (config) {
             self.vdevTele.performCommand("off");
             try {
                 system(
-                    "sleep 10"
+                    "sleep 20"
                 );
             } catch (err) {
                 console.log("Failed to execute script system call sleep : " + err);
