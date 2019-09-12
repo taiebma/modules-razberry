@@ -49,7 +49,6 @@ BonneNuitSalon.prototype.init = function (config) {
 
     	//  Extinction des feux
     	console.log("BonneNuitSalon : Extrinbction des feux !");
-    	zway.devices[2].instances[0].commandClasses[37].Set(0);
     	zway.devices[3].instances[0].commandClasses[37].Set(0);
     	zway.devices[3].instances[2].commandClasses[37].Set(0);
 
