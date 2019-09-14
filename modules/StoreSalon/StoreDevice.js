@@ -153,7 +153,7 @@ StoreSalon.prototype.performCommand = function (command, idStore) {
 	//  On attend un peu avant de se remettre au début
 	try {
 		system(
-			"sleep " + self.config.intervalSelectAttente * 2 / 1000);
+			"sleep " + self.config.intervalSelectAttente / 1000);
 	} catch (err) {
 		console.log("Failed to execute script system call sleep : " + err);
 	}
