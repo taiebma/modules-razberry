@@ -17,6 +17,14 @@
 // --- Class definition, inheritance and setup
 // ----------------------------------------------------------------------------
 
+StoreSalon.prototype.sleep = function(milliseconds) {
+	var start = new Date().getTime();
+	for (var i = 0; i < 1e7; i++) {
+	  if ((new Date().getTime() - start) > milliseconds){
+		break;
+	  }
+	}
+  }
 
 StoreSalon.prototype.selectStore = function (idStore) {
 
@@ -29,11 +37,14 @@ StoreSalon.prototype.selectStore = function (idStore) {
 		url: this.config.urlStoreSelect,
 		data: {}
 	});
+	self.sleep(self.config.intervalSelectAttente);
+	/*
 	try {
 		system("sleep " + self.config.intervalSelectAttente / 1000);
 	} catch (err) {
 		console.log("Failed to execute script system call sleep : " + err);
 	}
+	*/
 	for (i = 0; i < idStore; i++) {
 		console.log("Store " + (i + 1));
 
@@ -42,7 +53,7 @@ StoreSalon.prototype.selectStore = function (idStore) {
 			url: self.config.urlStoreSelect,
 			data: {}
 		});
-		self.timer = null;
+		/*
 		try {
 			system(
 				"sleep " + self.config.intervalSelectAttente / 1000
@@ -50,6 +61,8 @@ StoreSalon.prototype.selectStore = function (idStore) {
 		} catch (err) {
 			console.log("Failed to execute script system call sleep : " + err);
 		}
+		*/
+		self.sleep(self.config.intervalSelectAttente);
 
 	}
 	this.currentStore = idStore;
@@ -69,7 +82,8 @@ StoreSalon.prototype.selectStoreAll = function () {
 			url: self.config.urlStoreSelect,
 			data: {}
 		});
-		self.timer = null;
+		self.sleep(self.config.intervalSelectAttente);
+		/*
 		try {
 			system(
 				"sleep " + self.config.intervalSelectAttente / 1000
@@ -77,7 +91,7 @@ StoreSalon.prototype.selectStoreAll = function () {
 		} catch (err) {
 			console.log("Failed to execute script system call sleep : " + err);
 		}
-
+*/
 
 	}
 }
@@ -151,13 +165,15 @@ StoreSalon.prototype.performCommand = function (command, idStore) {
 	}
 
 	//  On attend un peu avant de se remettre au début
+	self.sleep(self.config.intervalSelectAttente);
+/*
 	try {
 		system(
 			"sleep " + self.config.intervalSelectAttente / 1000);
 	} catch (err) {
 		console.log("Failed to execute script system call sleep : " + err);
 	}
-
+*/
 	//  On se repositionne sur le "all channel"
 	self.selectStoreAll();
 

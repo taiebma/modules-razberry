@@ -198,6 +198,7 @@ StoreSalon.prototype.init = function (config) {
             self.modeNuit = true;
             console.log("StoreSalon : Mode nuit , fermeture des stores");
             self.vdevTele.performCommand("off");
+            /*
             try {
                 system(
                     "sleep 20"
@@ -205,6 +206,8 @@ StoreSalon.prototype.init = function (config) {
             } catch (err) {
                 console.log("Failed to execute script system call sleep : " + err);
             }
+            */
+            self.sleep(10000);
 
             self.vdevTable.performCommand("off");
         }
@@ -224,6 +227,7 @@ StoreSalon.prototype.init = function (config) {
             self.modeNuit = false;
             console.log("StoreSalon : Mode jour , ouverture des stores");
             self.vdevTele.performCommand("on");
+            /*
             try {
                 system(
                     "sleep 20"
@@ -231,6 +235,8 @@ StoreSalon.prototype.init = function (config) {
             } catch (err) {
                 console.log("Failed to execute script system call sleep : " + err);
             }
+            */
+    		self.sleep(10000);
             self.vdevTable.performCommand("on");
         }
     });
@@ -276,6 +282,15 @@ StoreSalon.prototype.init = function (config) {
             self.modeChaleur = false;
     });
 
+    StoreSalon.prototype.sleep = function(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
+          }
+        }
+      }
+        
 };
 
 
