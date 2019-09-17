@@ -198,15 +198,7 @@ StoreSalon.prototype.init = function (config) {
             self.modeNuit = true;
             console.log("StoreSalon : Mode nuit , fermeture des stores");
             self.vdevTele.performCommand("off");
-            /*
-            try {
-                system(
-                    "sleep 20"
-                );
-            } catch (err) {
-                console.log("Failed to execute script system call sleep : " + err);
-            }
-            */
+
             self.sleep(10000);
 
             self.vdevTable.performCommand("off");
@@ -227,16 +219,9 @@ StoreSalon.prototype.init = function (config) {
             self.modeNuit = false;
             console.log("StoreSalon : Mode jour , ouverture des stores");
             self.vdevTele.performCommand("on");
-            /*
-            try {
-                system(
-                    "sleep 20"
-                );
-            } catch (err) {
-                console.log("Failed to execute script system call sleep : " + err);
-            }
-            */
-    		self.sleep(10000);
+
+            self.sleep(10000);
+
             self.vdevTable.performCommand("on");
         }
     });

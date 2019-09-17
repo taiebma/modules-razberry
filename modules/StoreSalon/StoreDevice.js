@@ -28,7 +28,7 @@ StoreSalon.prototype.sleep = function(milliseconds) {
 
 StoreSalon.prototype.selectStore = function (idStore) {
 
-	console.log("Selection du store " + idStore);
+	console.log("Selection du store " + idStore + " intervalSelectAttente " + self.config.intervalSelectAttente);
 
 	var self = this;
 
@@ -37,14 +37,9 @@ StoreSalon.prototype.selectStore = function (idStore) {
 		url: this.config.urlStoreSelect,
 		data: {}
 	});
+
 	self.sleep(self.config.intervalSelectAttente);
-	/*
-	try {
-		system("sleep " + self.config.intervalSelectAttente / 1000);
-	} catch (err) {
-		console.log("Failed to execute script system call sleep : " + err);
-	}
-	*/
+
 	for (i = 0; i < idStore; i++) {
 		console.log("Store " + (i + 1));
 
@@ -53,15 +48,6 @@ StoreSalon.prototype.selectStore = function (idStore) {
 			url: self.config.urlStoreSelect,
 			data: {}
 		});
-		/*
-		try {
-			system(
-				"sleep " + self.config.intervalSelectAttente / 1000
-			);
-		} catch (err) {
-			console.log("Failed to execute script system call sleep : " + err);
-		}
-		*/
 		self.sleep(self.config.intervalSelectAttente);
 
 	}
@@ -82,16 +68,8 @@ StoreSalon.prototype.selectStoreAll = function () {
 			url: self.config.urlStoreSelect,
 			data: {}
 		});
+
 		self.sleep(self.config.intervalSelectAttente);
-		/*
-		try {
-			system(
-				"sleep " + self.config.intervalSelectAttente / 1000
-			);
-		} catch (err) {
-			console.log("Failed to execute script system call sleep : " + err);
-		}
-*/
 
 	}
 }
@@ -165,15 +143,8 @@ StoreSalon.prototype.performCommand = function (command, idStore) {
 	}
 
 	//  On attend un peu avant de se remettre au début
-	self.sleep(self.config.intervalSelectAttente);
-/*
-	try {
-		system(
-			"sleep " + self.config.intervalSelectAttente / 1000);
-	} catch (err) {
-		console.log("Failed to execute script system call sleep : " + err);
-	}
-*/
+	self.sleep(self.config.intervalAttente);
+
 	//  On se repositionne sur le "all channel"
 	self.selectStoreAll();
 
