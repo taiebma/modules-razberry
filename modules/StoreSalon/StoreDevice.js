@@ -28,9 +28,9 @@ StoreSalon.prototype.sleep = function(milliseconds) {
 
 StoreSalon.prototype.selectStore = function (idStore) {
 
-	console.log("Selection du store " + idStore + " intervalSelectAttente " + self.config.intervalSelectAttente);
-
 	var self = this;
+
+	console.log("Selection du store " + idStore + " intervalSelectAttente " + self.config.intervalSelectAttente);
 
 	http.request({
 		method: 'GET',
