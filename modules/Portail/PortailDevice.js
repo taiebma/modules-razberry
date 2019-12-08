@@ -42,14 +42,14 @@ Portail.prototype.performCommand = function (command) {
 	var handled = true;
 	var self = this;
 
-	//    console.log("PortailDevice: Etat du portail : " + zway.devices[15].instances[0].Basic.data.level.value);
-	console.log("PortailDevice: Etat du portail : " + controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level"));
+	//    console.log("PortailDevice: Etat du portail : " + zway.devices[18].instances[0].Basic.data.level.value);
+	console.log("PortailDevice: Etat du portail : " + controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
 
 	if ("openPartial" === command) {
 
 		console.log("PortailDevice: Ouverture partielle du portail ");
 
-		if (zway.devices[15].instances[0].Basic.data.level.value == false) {
+		if (zway.devices[18].instances[0].Basic.data.level.value == false) {
 			//  ouverture du store
 			console.log("PortailDevice: OpenPartial");
 			console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailPartial);
@@ -67,8 +67,8 @@ Portail.prototype.performCommand = function (command) {
 
 		console.log("PortailDevice: Ouverture complete du portail");
 
-		if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "off" 
-			|| controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "") {
+		if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") == "off" 
+			|| controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") == "") {
 			//  ouverture du store
 			console.log("PortailDevice: Open");
 			console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailOpen);
@@ -81,8 +81,8 @@ Portail.prototype.performCommand = function (command) {
 
 			//  On verifie qu'il est bien ouvert sinon on recommence
 			self.timer = setTimeout(function () {
-				if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "off" 
-					|| controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "") {
+				if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") == "off" 
+					|| controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") == "") {
 					console.log("PortailDevice: Devait etre a moitie ouvert on ouvre");
 					console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailOpen);
 
@@ -105,8 +105,8 @@ Portail.prototype.performCommand = function (command) {
 
 		console.log("PortailDevice: Fermeture du portail ");
 
-		if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "on"
-			|| controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "") {
+		if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") == "on"
+			|| controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") == "") {
 			console.log("PortailDevice: Close");
 			console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailClose);
 
@@ -118,8 +118,8 @@ Portail.prototype.performCommand = function (command) {
 
 			//  On verifie qu'il est bien ferme sinon on recommence
 			self.timer = setTimeout(function () {
-				if (controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "on"
-					|| controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").get("metrics:level") == "") {
+				if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") == "on"
+					|| controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") == "") {
 					console.log("PortailDevice: Devait etre a moitie ouvert on referme");
 					console.log("PortailDevice: Appel de l'URL : " + self.config.urlPortailClose);
 
