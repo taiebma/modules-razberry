@@ -131,7 +131,7 @@ Portail.prototype.performCommand = function (command) {
 				}
 
 				self.timer = null;
-			}, 30 * 1000);
+			}, 40 * 1000);
 
 			this.vdev.set("metrics:level", "off");
 		} else {
