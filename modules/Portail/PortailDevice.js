@@ -35,18 +35,6 @@ function PortailDevice(id, controller, zDeviceId, zInstanceId, zScaleId) {
 
 inherits(PortailDevice, VirtualDevice);
 
-	//  Evenement de mise a jour d'evement
-Portail.prototype.metricUpdated = function (vDev) {
-	var id = vDev.id;
-	var name = vDev.name;
-	var value = vDev.get("metrics:level");
-
-	console.log("PortailDevice : update de " + id + " name = " + name + " value = " + value);
-	if (id === "ZWayVDev_zway_18-0-113-6-Door-A") {
-		this.vdev.set("metrics:level", controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
-	}
-}
-
 //  Devait servir a mettre a jour le device mais loadJSON ne fonctionne pas a cet endroit
 Portail.prototype.performCommand = function (command) {
 	console.log("PortailDevice: --- PortailDevice.performCommand processing...");
