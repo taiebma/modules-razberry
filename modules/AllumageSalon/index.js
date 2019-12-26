@@ -73,7 +73,7 @@ AllumageSalon.prototype.init = function (config) {
 
     this.controller.on('AllumageLumieres', function () {
 	if (zway.devices[3].instances[0].SwitchBinary.data.level.value === false) {
-   			zway.devices[19].instances[0].commandClasses[37].Set(true);
+   			zway.devices[21].instances[0].commandClasses[37].Set(true);
     		zway.devices[3].instances[0].commandClasses[37].Set(true);
 	}
     });
