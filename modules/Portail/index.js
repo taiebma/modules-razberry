@@ -63,18 +63,6 @@ Portail.prototype.init = function (config) {
 
     var self = this;
 
-    //  Evenement de mise a jour d'evement
-    self.metricUpdated = function (vDev) {
-        var id = vDev.id;
-        var name = vDev.name;
-        var value = vDev.get("metrics:level");
-
-        console.log("PortailDevice : update de " + id + " name = " + name + " value = " + value);
-        if (id === "ZWayVDev_zway_18-0-113-6-Door-A") {
-            this.vdev.set("metrics:level", controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
-        }
-    }
-
     self.controller.emit("cron.addTask", "Portail.Ouverture.poll", {
         minute: self.config.minuteOuverture,
         hour: self.config.heureOuverture,
