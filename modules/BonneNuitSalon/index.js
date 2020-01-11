@@ -51,7 +51,9 @@ BonneNuitSalon.prototype.init = function (config) {
     	console.log("BonneNuitSalon : Extrinbction des feux !");
     	zway.devices[3].instances[0].commandClasses[37].Set(0);
     	zway.devices[3].instances[2].commandClasses[37].Set(0);
-    	zway.devices[21].instances[0].commandClasses[37].Set(0);
+		var curDate = new Date();
+		if (curDate.getDay() != 6) // On eteint pas le samedi
+			zway.devices[21].instances[0].commandClasses[37].Set(0);
 
 	//  Mise en place d'une tempo sinon il ne s'arrete plus
 	self.timer = setTimeout(function () {
