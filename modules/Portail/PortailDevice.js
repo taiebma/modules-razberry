@@ -18,7 +18,7 @@
 // ----------------------------------------------------------------------------
 // --- Class definition, inheritance and setup
 // ----------------------------------------------------------------------------
-
+/*
 function PortailDevice(id, controller, zDeviceId, zInstanceId, zScaleId) {
 	// Call superconstructor first (AutomationModule)
 	PortailDevice.super_.call(this, id, controller, zDeviceId, zInstanceId);
@@ -34,6 +34,7 @@ function PortailDevice(id, controller, zDeviceId, zInstanceId, zScaleId) {
 }
 
 inherits(PortailDevice, VirtualDevice);
+*/
 
 //  Devait servir a mettre a jour le device mais loadJSON ne fonctionne pas a cet endroit
 Portail.prototype.performCommand = function (command) {
