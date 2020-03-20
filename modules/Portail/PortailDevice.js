@@ -15,27 +15,6 @@
 
 //var request = require("../../request");
 
-// ----------------------------------------------------------------------------
-// --- Class definition, inheritance and setup
-// ----------------------------------------------------------------------------
-/*
-function PortailDevice(id, controller, zDeviceId, zInstanceId, zScaleId) {
-	// Call superconstructor first (AutomationModule)
-	PortailDevice.super_.call(this, id, controller, zDeviceId, zInstanceId);
-
-	// Create instance variables
-
-	this.zCommandClassId = 0x32;
-	this.zSubTreeKey = zScaleId;
-
-	this.deviceType = "probe";
-
-	var self = this;
-}
-
-inherits(PortailDevice, VirtualDevice);
-*/
-
 //  Devait servir a mettre a jour le device mais loadJSON ne fonctionne pas a cet endroit
 Portail.prototype.performCommand = function (command) {
 	console.log("PortailDevice: --- PortailDevice.performCommand processing...");
