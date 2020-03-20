@@ -44,8 +44,8 @@ Portail.prototype.performCommand = function (command) {
 
 	//    console.log("PortailDevice: Etat du portail : " + zway.devices[18].instances[0].Basic.data.level.value);
 	console.log("PortailDevice: Etat du portail : " + controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
-	self.set("metrics:level", controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
-	
+	self.vdev.set("metrics:level", controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
+
 	if ("openPartial" === command) {
 
 		console.log("PortailDevice: Ouverture partielle du portail ");
