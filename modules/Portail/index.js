@@ -139,6 +139,23 @@ Portail.prototype.init = function (config) {
     });
 
     ////////////
+    //  Evenement notification push
+    // notice = {
+    //    id: ,
+    //    timestamp: ,
+    //    level: ,
+    //    message: ,
+    //    type: ,
+    //    source: ,
+    //    redeemed:
+    ////////////
+    this.controller.on('notifications.push', function (notice) {
+        console.log("Portail : Notification " + notice.source + ' msg:' + notice.message);
+        if (notice.source === 'Portail Device')
+            self.vdev.set("metrics:level", self.controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
+    });
+
+        ////////////
     //  Evenement permettant la fermeture du portail
     ////////////
     this.controller.on('Portail.fermeturePortail', function (id, name, value) {
