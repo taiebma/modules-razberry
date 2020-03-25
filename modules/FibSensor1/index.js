@@ -105,7 +105,8 @@ FibSensor1.prototype.init = function (config) {
     //    redeemed:
     ////////////
     this.controller.on('notifications.push', function (notice) {
-        console.log("FibSensor1 : Notification " + notice.source + ' msg:' + notice.message);
+		console.log("FibSensor1 : Notification " + notice.source + ' msg:' + notice.message);
+		/*
         if (notice.source === 'PortailDevice') {
 			if (notice.message.l == "on") {
 				console.log("FibSensor1 : Portail ouvert");
@@ -115,6 +116,7 @@ FibSensor1.prototype.init = function (config) {
 				self.controller.emit("AlarmPortailFerme");
 			}
 		}
+		*/
     });
 
 };
