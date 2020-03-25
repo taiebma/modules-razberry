@@ -63,9 +63,6 @@ Portail.prototype.init = function (config) {
 
     var self = this;
 
-    //  Mise à jour du statut du portail
-    //self.vdev.set("metrics:level", self.controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
-
     self.controller.emit("cron.addTask", "Portail.Ouverture.poll", {
         minute: self.config.minuteOuverture,
         hour: self.config.heureOuverture,
@@ -198,7 +195,9 @@ Portail.prototype.init = function (config) {
             debugPrint("Failed to execute script notif system call: " + err);
         }
 
-        self.vdev.set("metrics:level", "on");
+        // ATTENTION : Mettre a jour systématiquement provoque une boucle infinie de notification
+        if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") === "off")
+            self.vdev.set("metrics:level", "on");
     });
 
     ////////////
@@ -235,12 +234,11 @@ Portail.prototype.init = function (config) {
             debugPrint("Failed to execute script notif system call: " + err);
         }
 
-        self.vdev.set("metrics:level", "off");
+        // ATTENTION : Mettre a jour systématiquement provoque une boucle infinie de notification
+        if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") === "on")
+            self.vdev.set("metrics:level", "off");
     });
-
-    //  Preinitialisation en cas de reboot
-    //controller.devices.get("ZWayVDev_zway_Remote_15-0-0-B").set("metrics:level", "off");
-    
+  
 };
 
 // ----------------------------------------------------------------------------

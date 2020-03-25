@@ -24,7 +24,9 @@ Portail.prototype.performCommand = function (command) {
 
 	//    console.log("PortailDevice: Etat du portail : " + zway.devices[18].instances[0].Basic.data.level.value);
 	console.log("PortailDevice: Etat du portail : " + controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
-	self.vdev.set("metrics:level", controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
+	// ATTENTION : Mettre a jour systématiquement provoque une boucle infinie de notification
+	if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") !== self.vdev.get("metrics:level"))
+		self.vdev.set("metrics:level", controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
 
 	if ("openPartial" === command) {
 
@@ -77,7 +79,9 @@ Portail.prototype.performCommand = function (command) {
 				self.timer = null;
 			}, 40 * 1000);
 
-			this.vdev.set("metrics:level", "on");
+			// ATTENTION : Mettre a jour systématiquement provoque une boucle infinie de notification
+			if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") === "off")
+				this.vdev.set("metrics:level", "on");
 		} else {
 			console.log("PortailDevice: Deja ouvert");
 		}
@@ -114,7 +118,9 @@ Portail.prototype.performCommand = function (command) {
 				self.timer = null;
 			}, 40 * 1000);
 
-			this.vdev.set("metrics:level", "off");
+			// ATTENTION : Mettre a jour systématiquement provoque une boucle infinie de notification
+			if (controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level") === "on")
+				this.vdev.set("metrics:level", "off");
 		} else {
 			console.log("PortailDevice: Deja ferme");
 		}
