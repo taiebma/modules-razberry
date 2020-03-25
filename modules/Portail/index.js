@@ -151,8 +151,8 @@ Portail.prototype.init = function (config) {
     ////////////
     this.controller.on('notifications.push', function (notice) {
         console.log("Portail : Notification " + notice.source + ' msg:' + notice.message);
-        if (notice.source === 'Portail Device')
-            self.vdev.set("metrics:level", self.controller.devices.get("ZWayVDev_zway_18-0-113-6-Door-A").get("metrics:level"));
+        if (notice.source === 'PortailDevice')
+            self.vdev.set("metrics:level", notice.message.l);
     });
 
         ////////////
