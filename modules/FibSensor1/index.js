@@ -92,6 +92,31 @@ FibSensor1.prototype.init = function (config) {
 	};
 
     this.controller.devices.on('change:metrics:level', self.metricUpdated);
+
+	////////////
+    //  Evenement notification push
+    // notice = {
+    //    id: ,
+    //    timestamp: ,
+    //    level: ,
+    //    message: ,
+    //    type: ,
+    //    source: ,
+    //    redeemed:
+    ////////////
+    this.controller.on('notifications.push', function (notice) {
+        console.log("FibSensor1 : Notification " + notice.source + ' msg:' + notice.message);
+        if (notice.source === 'PortailDevice') {
+			if (notice.message.l == "on") {
+				console.log("FibSensor1 : Portail ouvert");
+				self.controller.emit("AlarmPortailOuvert");
+			} else {
+				console.log("FibSensor1 : Portail ferme");
+				self.controller.emit("AlarmPortailFerme");
+			}
+		}
+    });
+
 };
 
 
