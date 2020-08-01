@@ -245,7 +245,7 @@ StoreSalon.prototype.init = function (config) {
     // Verification des conditions meteo
     this.controller.on('MeteoDevice1.meteoUpdated', function () {
         self.ciel = controller.devices.get("MeteoDevice1").get("metrics:forecast_summary");
-        self.tempExt = controller.devices.get("MeteoDevice1").get("metrics:tempExt");
+        self.tempExt = controller.devices.get("MeteoDevice1").get("metrics:forecast_temperature");
 
         var curDate1 = new Date();
 
